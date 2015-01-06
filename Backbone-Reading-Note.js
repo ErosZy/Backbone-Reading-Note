@@ -369,9 +369,9 @@
                     //从上面可知，changed是可能为{}的，但是delete {}[attr]是恒为true
                     //那这种情况用在哪里呢？明显是多线程
                     //例如，原值{name:1}
-                    //线程1 {name:2}进行了修改
-                    //线程2 {name:1}进行了修改
-                    //这个时候应该是值无变化操作的，所以应该进行delete线程1的改变
+                    //worker/cluster1 {name:2}进行了修改
+                    //worker/cluster2 {name:1}进行了修改
+                    //这个时候应该是值无变化操作的，所以应该进行deleteworker/cluster1的改变
                     delete this.changed[attr];
                 }
                 
